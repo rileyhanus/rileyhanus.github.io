@@ -34,26 +34,27 @@
         <!--================Header Menu Area =================-->
         <header class="header_area navbar_fixed">
             <div class="main_menu" id="mainNav">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html">Riley Hanus: Music</a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="#About">About</a></li> 
-                                <li class="nav-item active"><a class="nav-link" href="#Cold-Turkey">Cold Turkey</a></li> 
-								<li class="nav-item"><a class="nav-link" href="#TRQ">The Real Quaid</a></li> 
-								<!-- <li class="nav-item"><a class="nav-link" href="#Contact">The Studio</a></li> -->
-							</ul>
-						</div>
-					</div>
-            	</nav>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container box_1620">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <a class="navbar-brand logo_h" href="index.html">Riley Hanus: Music</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item active"><a class="nav-link" href="#About">About</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#Setlist">Setlist</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="#Cold-Turkey">Cold Turkey</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#TRQ">The Real Quaid</a></li>
+                                <!-- <li class="nav-item"><a class="nav-link" href="#Contact">The Studio</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </header>
         <!--================Header Menu Area =================-->
@@ -61,30 +62,285 @@
         <!--================Home Banner Area =================-->
         <section class="home_banner_area" id="About">
             <div class="banner_inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="about_padding">
-								<img src="img/photos/music-headshot.png" alt="">
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="banner_content">
-								<h5>Hello! My name is</h5>
-								<h2>Riley Hanus</h2>
-								<p>I play, write, and produce music. I play keyboard and sing in the Raleigh based funk party band <a href="https://www.instagram.com/the_og_rumpshakers/">The Original Rumpshakers<a>. My solo act is <a href="https://www.instagram.com/riley_from_iowa/" target="_blank"> Riley_from_Iowa</a>. Some other groups I've been a part of include The Real Quaid (Iowa based alt-rock band), Cold Turkey and the Fruitcakes (Chicago based mash-up string band), and <a href="https://www.almostfamous.live/about-1">Almost Famous </a> (Atlanta based party rock band). I play guitar/bass, piano, mandolin, and sing. 
-                                </p>
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="about_padding">
+                                <img src="img/photos/music-headshot.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="banner_content">
+                                <h5>Hello! My name is</h5>
+                                <h2>Riley Hanus</h2>
+                                <p>I'm a multi-instrumentalist, singer, song-writer, and music director looking to collaborate with other musicians in Raleigh. I play guitar, keys, and sing proficiently. My first paid gig was 18 years ago. Since then I've played countless gigs to 10-100 people, many to 100-1,000, a few to 1,000-10,000, and a few to less than 10. My solo act is <a href="https://www.instagram.com/riley_from_iowa/" target="_blank">Riley_from_Iowa</a>. Some other groups I've been a part of include The Real Quaid (Iowa based alt-rock band), Cold Turkey and the Fruitcakes (Chicago based mash-up string band) <a href="https://www.almostfamous.live/about-1">Almost Famous</a> (Atlanta based party rock band), and The Original Rumpshakers (Raleigh based funk party band).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!--================End Home Banner Area =================-->
 
-       <!--================Feature Area =================-->
+        <!--================Setlist Section =================-->
+        <section class="portfolio_details_area p_20" id="Setlist">
+            <div class="container">
+                <h3>Setlist</h3>
+                <p>Here is an incomplete list of cover songs I know. This list is continuously updated as I learn new songs and work with different groups.</p>
+                <hr>
+                <div class="portfolio_details_inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portfolio_right_text">
+                                <div class="text-right mb-2">
+                                    <small id="song-count" style="font-size: 0.85em; color: #888; font-style: italic;">Total: <span id="count-number">-</span> songs</small>
+                                </div>
+                                <div id="setlist-scroll-container" style="border: 2px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9; max-height: 600px; overflow-y: auto; overflow-x: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                    <style>
+                                        #setlist-scroll-container .setlist-column li {
+                                            padding: 8px 12px;
+                                            margin: 2px 0;
+                                            border-radius: 4px;
+                                            transition: background-color 0.2s ease;
+                                            font-size: 0.95em;
+                                            line-height: 1.6;
+                                        }
+                                        #setlist-scroll-container .setlist-column li:hover {
+                                            background-color: #e8e8e8;
+                                        }
+                                        #setlist-scroll-container .setlist-column li strong {
+                                            color: #2c3e50;
+                                            margin-right: 8px;
+                                        }
+                                        #setlist-scroll-container::-webkit-scrollbar {
+                                            width: 10px;
+                                        }
+                                        #setlist-scroll-container::-webkit-scrollbar-track {
+                                            background: #f1f1f1;
+                                            border-radius: 5px;
+                                        }
+                                        #setlist-scroll-container::-webkit-scrollbar-thumb {
+                                            background: #888;
+                                            border-radius: 5px;
+                                        }
+                                        #setlist-scroll-container::-webkit-scrollbar-thumb:hover {
+                                            background: #555;
+                                        }
+                                    </style>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="setlist-column" style="list-style: none; padding-left: 0; margin: 0;">
+                                                <li><strong>1985</strong> - Bowling For Soup</li>
+                                                <li><strong>Ain't No Sunshine</strong> - Bill Withers</li>
+                                                <li><strong>Ain't Nobody</strong></li>
+                                                <li><strong>Alaska</strong> - Pinegrove</li>
+                                                <li><strong>All Along The Watchtower</strong> - Jimi Hendrix</li>
+                                                <li><strong>All I Wanna Do</strong> - Sheryl Crow</li>
+                                                <li><strong>All Star // All For You</strong> - Smash Mouth // Sister Hazel</li>
+                                                <li><strong>All The Small Things</strong> - Blink-182</li>
+                                                <li><strong>American Girl</strong> - Tom Petty</li>
+                                                <li><strong>Ants Marching</strong> - Dave Matthews Band</li>
+                                                <li><strong>As It Was</strong> - Harry Styles</li>
+                                                <li><strong>Atlantic City</strong> - The Band</li>
+                                                <li><strong>Attention</strong> - Charlie Puth</li>
+                                                <li><strong>Back To Black</strong> - Amy Winehouse</li>
+                                                <li><strong>Bad Mamma Jamma</strong> - Carl Carlton</li>
+                                                <li><strong>Basket Case</strong> - Green Day</li>
+                                                <li><strong>Before He Cheats</strong> - Carrie Underwood</li>
+                                                <li><strong>Beggin</strong> - Maneskin</li>
+                                                <li><strong>Benny and the Jets</strong> - Elton John</li>
+                                                <li><strong>Best Part</strong> - Daniel Caesar</li>
+                                                <li><strong>Beyond</strong> - Leon Bridges</li>
+                                                <li><strong>Beyond (Acoustic)</strong> - Leon Bridges</li>
+                                                <li><strong>Blue Sky</strong> - Allman Brothers</li>
+                                                <li><strong>Born To Run</strong> - Bruce Springsteen</li>
+                                                <li><strong>Brick House</strong> - Commodores</li>
+                                                <li><strong>Broadway</strong> - Goo Goo Dolls</li>
+                                                <li><strong>Brown Eyed Lover</strong> - Allen Stone</li>
+                                                <li><strong>Brown Eyed Lover > Use Me</strong> - Allen Stone > Bill Withers</li>
+                                                <li><strong>Burning Love</strong> - Elvis Presley</li>
+                                                <li><strong>Burnin Up</strong> - Jonas Brothers</li>
+                                                <li><strong>California Sober</strong> - Post Malone</li>
+                                                <li><strong>Champagne Supernova</strong> - Oasis</li>
+                                                <li><strong>Cheeseburger In Paradise</strong> - Jimmy Buffett</li>
+                                                <li><strong>Chicken Fried</strong> - Zac Brown Band</li>
+                                                <li><strong>Cissy Strut</strong> - The Meters</li>
+                                                <li><strong>Come Praise and Glorify</strong></li>
+                                                <li><strong>Come Together</strong> - The Beatles</li>
+                                                <li><strong>Come Together > I Will Survive > Tainted</strong> - The Beatles > Gloria Gaynor > Soft Cell</li>
+                                                <li><strong>Country Roads</strong> - John Denver</li>
+                                                <li><strong>Courtesy of the Red White and Blue</strong> - Toby Keith</li>
+                                                <li><strong>Crazy</strong> - Gnarls Barkley</li>
+                                                <li><strong>Daughters</strong> - John Mayer</li>
+                                                <li><strong>Dancing In The Moonlight</strong> - King Harvest</li>
+                                                <li><strong>Don't Look Back In Anger</strong> - Oasis</li>
+                                                <li><strong>Don't Stop Believing</strong> - Journey</li>
+                                                <li><strong>Drift Away</strong> - Dobie Gray</li>
+                                                <li><strong>Drops Of Jupiter</strong> - Train</li>
+                                                <li><strong>Drink In My Hand</strong> - Eric Church</li>
+                                                <li><strong>Drunken Driver</strong> - Ricky Skaggs</li>
+                                                <li><strong>Dust On The Bottle</strong> - David Lee Murphy</li>
+                                                <li><strong>Dreams // Don't You Want Me Baby</strong> - Fleetwood Mac // Human League</li>
+                                                <li><strong>Espresso</strong> - Sabrina Carpenter</li>
+                                                <li><strong>Everybody Wants To Rule The World</strong> - Lettuce</li>
+                                                <li><strong>Everyday Is a Winding Road</strong> - Sheryl Crow</li>
+                                                <li><strong>Feathered Indians</strong> - Tyler Childers</li>
+                                                <li><strong>Fire And Rain</strong> - James Taylor</li>
+                                                <li><strong>Flowers</strong> - Miley Cyrus</li>
+                                                <li><strong>Fly Like An Eagle</strong> - Steve Miller Band</li>
+                                                <li><strong>FMU</strong> - Riley Rae</li>
+                                                <li><strong>Free Bird</strong> - Lynyrd Skynyrd</li>
+                                                <li><strong>Frosty The Snowman</strong></li>
+                                                <li><strong>Fuck You</strong> - CeeLo Green</li>
+                                                <li><strong>Glory Days</strong> - Bruce Springsteen</li>
+                                                <li><strong>Gold On The Ceiling</strong> - Black Keys</li>
+                                                <li><strong>Have You Ever Seen The Rain</strong> - CCR</li>
+                                                <li><strong>Heartache On The Dance Floor</strong> - Jon Pardi</li>
+                                                <li><strong>Higher</strong> - Creed</li>
+                                                <li><strong>Higher Ground</strong> - Stevie Wonder</li>
+                                                <li><strong>Hit The Road Jack</strong> - Casey Abrams</li>
+                                                <li><strong>Holding Out</strong> - Riley Rae</li>
+                                                <li><strong>Hold On // I Want You Back</strong> - Alabama Shakes // Jackson 5</li>
+                                                <li><strong>Hound Dog</strong> - Dee Dee Bridgewater</li>
+                                                <li><strong>Hound Dog > Hit The Road Jack</strong> - Dee Dee Bridgewater > Casey Abrams</li>
+                                                <li><strong>How Do You Like Me Now</strong> - Toby Keith</li>
+                                                <li><strong>How I Let A Good Man Down</strong> - Sharon Jones & The Dap-Kings</li>
+                                                <li><strong>How To Save A Life</strong> - The Fray</li>
+                                                <li><strong>Hows It Going To Be</strong> - Third Eye Blind</li>
+                                                <li><strong>I'd Rather Go Blind</strong> - Etta James</li>
+                                                <li><strong>I Feel Good</strong> - Scary Pockets</li>
+                                                <li><strong>I Had Some Help</strong> - Post Malone</li>
+                                                <li><strong>I Heard It Through The Grapevine</strong> - Marvin Gaye</li>
+                                                <li><strong>I Like It I Love It</strong> - Tim McGraw</li>
+                                                <li><strong>I Love This Bar</strong> - Toby Keith</li>
+                                                <li><strong>I Want You Back</strong> - Jackson 5</li>
+                                                <li><strong>I Wanna Dance With Somebody</strong> - Whitney Houston</li>
+                                                <li><strong>I Will Survive</strong> - Gloria Gaynor</li>
+                                                <li><strong>I'm Not The Only One</strong> - Sam Smith</li>
+                                                <li><strong>It's A Man's World</strong> - James Brown</li>
+                                                <li><strong>It's Five O'Clock Somewhere</strong> - Jimmy Buffett</li>
+                                                <li><strong>It's Gonna Be Me</strong> - NSYNC</li>
+                                                <li><strong>Jingle Bells</strong></li>
+                                                <li><strong>Jumper</strong> - Third Eye Blind</li>
+                                                <li><strong>Just Kissed My Baby</strong> - The Meters</li>
+                                                <li><strong>Kiss</strong> - Prince</li>
+                                                <li><strong>Knee Deep</strong> - Zac Brown Band</li>
+                                                <li><strong>Lady Marmalade</strong> - Labelle</li>
+                                                <li><strong>Le Freak (Freak Out)</strong> - CHIC</li>
+                                                <li><strong>Leave The Door Open</strong> - Silk Sonic</li>
+                                                <li><strong>Levitating</strong> - Dua Lipa</li>
+                                                <li><strong>Life Is A Highway</strong> - Rascal Flatts</li>
+                                                <li><strong>Love On Top</strong> - Beyoncé</li>
+                                                <li><strong>Love Story</strong> - Taylor Swift</li>
+                                                <li><strong>Maneater</strong> - Hall & Oates</li>
+                                                <li><strong>Margaritaville</strong> - Jimmy Buffett</li>
+                                                <li><strong>Mary Jane's Last Dance</strong> - Tom Petty</li>
+                                                <li><strong>Me and Bobby McGee</strong> - Janis Joplin</li>
+                                                <li><strong>Mockingbird</strong> - Ruston Kelly</li>
+                                                <li><strong>Mr. Brightside</strong> - The Killers</li>
+                                                <li><strong>Mr. Jones</strong> - Counting Crows</li>
+                                                <li><strong>Needed Me</strong> - Scary Pockets</li>
+                                                <li><strong>No Diggity</strong> - Blackstreet, Dr. Dre, Queen Pen</li>
+                                                <li><strong>Nobody's Baby</strong> - Sharon Jones & The Dap-Kings</li>
+                                                <li><strong>Only Wanna Be With You // Slide</strong> - Hootie & The Blowfish // Goo Goo Dolls</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="setlist-column" style="list-style: none; padding-left: 0; margin: 0;">
+                                            <li><strong>Parachute</strong> - Chris Stapleton</li>
+                                            <li><strong>Pink Pony Club</strong> - Chappell Roan</li>
+                                            <li><strong>Pride and Joy</strong> - Stevie Ray Vaughan</li>
+                                            <li><strong>Proud Mary</strong> - CCR</li>
+                                            <li><strong>Queen of California</strong> - John Mayer</li>
+                                            <li><strong>Red Ragtop</strong> - Tim McGraw</li>
+                                            <li><strong>Rehab</strong> - Amy Winehouse</li>
+                                            <li><strong>Rollin in the Deep</strong> - Adele</li>
+                                            <li><strong>Royals</strong> - Lorde</li>
+                                            <li><strong>Santa Claus Is Coming To Town</strong> - Bruce Springsteen</li>
+                                            <li><strong>Santeria</strong> - Sublime</li>
+                                            <li><strong>Satisfaction</strong> - Otis Redding</li>
+                                            <li><strong>Semi Charmed Life</strong> - Third Eye Blind</li>
+                                            <li><strong>Set Fire to the Rain</strong> - Adele</li>
+                                            <li><strong>Seven Nation Army</strong> - The White Stripes</li>
+                                            <li><strong>Sex On Fire</strong> - Kings of Leon</li>
+                                            <li><strong>Should've Been A Cowboy</strong> - Toby Keith</li>
+                                            <li><strong>Shut Up and Dance</strong> - WALK THE MOON</li>
+                                            <li><strong>Sign Sealed Delivered</strong> - Stevie Wonder</li>
+                                            <li><strong>Silent Night</strong></li>
+                                            <li><strong>Skylight</strong> - Pinegrove</li>
+                                            <li><strong>Smells Like Teen Spirit</strong> - Nirvana</li>
+                                            <li><strong>Smoke A Little Smoke</strong> - Eric Church</li>
+                                            <li><strong>Something</strong> - The Beatles</li>
+                                            <li><strong>Starting Over</strong> - Chris Stapleton</li>
+                                            <li><strong>Stacy's Mom</strong> - Fountains Of Wayne</li>
+                                            <li><strong>Stick Season</strong> - Noah Kahan</li>
+                                            <li><strong>Sugaree</strong> - Grateful Dead</li>
+                                            <li><strong>Sucker</strong> - Jonas Brothers</li>
+                                            <li><strong>Summer Of 69</strong> - Bryan Adams</li>
+                                            <li><strong>Super Freak</strong> - Rick James</li>
+                                            <li><strong>Superstition</strong> - Stevie Wonder</li>
+                                            <li><strong>Suspicious Minds</strong> - Elvis Presley</li>
+                                            <li><strong>Sweet Dreams</strong> - Eurythmics</li>
+                                            <li><strong>Sweet Home Alabama</strong> - Lynyrd Skynyrd</li>
+                                            <li><strong>Sunday Morning</strong> - Maroon 5</li>
+                                            <li><strong>Tainted Love</strong> - Scary Pockets</li>
+                                            <li><strong>Teenage Dream</strong> - Katy Perry</li>
+                                            <li><strong>Tennessee Whiskey</strong> - Chris Stapleton</li>
+                                            <li><strong>The 12 Days of Christmas</strong></li>
+                                            <li><strong>The Middle</strong> - Jimmy Eat World</li>
+                                            <li><strong>The Thrill Is Gone</strong> - B.B. King</li>
+                                            <li><strong>This Love</strong> - Maroon 5</li>
+                                            <li><strong>Tighten Up</strong> - Black Keys</li>
+                                            <li><strong>Tiny Dancer</strong> - Elton John</li>
+                                            <li><strong>Tis So Sweet</strong></li>
+                                            <li><strong>Toes</strong> - Zac Brown Band</li>
+                                            <li><strong>Toxic/Pony</strong> - Britney Spears // Ginuwine</li>
+                                            <li><strong>Tyrone</strong> - Erykah Badu</li>
+                                            <li><strong>Under The Bridge</strong> - Red Hot Chili Peppers</li>
+                                            <li><strong>Use Me</strong> - Bill Withers</li>
+                                            <li><strong>Use Somebody</strong> - Kings of Leon</li>
+                                            <li><strong>Valarie</strong> - Amy Winehouse</li>
+                                            <li><strong>Wagon Wheel</strong> - Old Crow Medicine Show</li>
+                                            <li><strong>Watermelon Sugar</strong> - Harry Styles</li>
+                                            <li><strong>Whatever It Is</strong> - Zac Brown Band</li>
+                                            <li><strong>What I Got</strong> - Sublime</li>
+                                            <li><strong>What's My Age Again</strong> - Blink-182</li>
+                                            <li><strong>When I Come Around</strong> - Green Day</li>
+                                            <li><strong>White Horse</strong> - Chris Stapleton</li>
+                                            <li><strong>Whitehouse Road</strong> - Tyler Childers</li>
+                                            <li><strong>Wide Open Spaces</strong> - The Chicks</li>
+                                            <li><strong>Will It Go Round In Circles</strong> - Billy Preston</li>
+                                            <li><strong>Wonderwall</strong> - Oasis</li>
+                                            <li><strong>Workin Day and Night</strong> - Michael Jackson</li>
+                                            <li><strong>Wrong Ones</strong> - Post Malone</li>
+                                            <li><strong>Year 3000</strong> - Jonas Brothers</li>
+                                            <li><strong>You Know I'm No Good</strong> - Amy Winehouse</li>
+                                            <li><strong>Zombie</strong> - The Cranberries</li>
+                                            <li><strong>$10 Cowboy</strong> - Charley Crockett</li>
+                                            <li><strong>3am</strong> - Matchbox Twenty</li>
+                                            <li><strong>Hold My Hand</strong> - Hootie & The Blowfish</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    // Count total songs dynamically
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var songItems = document.querySelectorAll('#Setlist ul.setlist-column li');
+                        var count = songItems.length;
+                        document.getElementById('count-number').textContent = count;
+                    });
+                </script>
+            </div>
+        </section>
+        <!--================End Setlist Section =================-->
+
+        <!--================Feature Area =================-->
         <!--================ Shows =================-->
-        <section class="portfolio_details_area p_20" id="Cold-Turkey">
+        <!-- <section class="portfolio_details_area p_20" id="Cold-Turkey">
         	<div class="container">
                 <h3> Event Calendar </h3>
                 <p>
@@ -96,7 +352,7 @@
                 <hr>
             </div>
         	</div>
-        </section>
+        </section> -->
         <!--================ Shows =================-->
 
         <!--================ Instagram =================-->
@@ -109,69 +365,42 @@
 
         <!--================Cold Turkey =================-->
         <section class="portfolio_details_area p_20" id="Cold-Turkey">
-        	<div class="container">
-            <h3> Cold Turkey and the Fruitcakes </h3>
-            <hr>
-            <div class="portfolio_details_inner">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="left_img">
-                                <img class="img-fluid" src="./img/photos/ColdTurkey.png">
-							</div>
-						</div>
-
-
-						<div class="col-md-9">
-							<div class="portfolio_right_text">
-                     			<p> When I was living in Chicago, my friends and I formed a folk-rock mash-up coverband named Cold Turkey and the Fruitcakes.
-                                    We recorded two albums in our basement studio, yes one is a Christmas album. We were really going for that "back shelf at Goodwill" vibe. </p>
-                                <p> Alex Lupo (Vocals, Guitar)     Riley Hanus (Vocals, Mandolin, Guitar)     Matthias Agne (Bass, Baritone)     Robert Free (Drums, Percussion)     Blake Rason (Violin, Viola)</p>
-							</div>
-						</div>
-					</div>
-        		</div>
-                <hr>
-        	</div>
-
-        	<!-- The Random Hits-->
-        	<div class="container">
-        		<div class="portfolio_details_inner">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="left_img">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=xzs6pxjVmArkQra7&amp;list=PLdLhIfXIz3xPKF6aDrn50_pqLXegXuLQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-							</div>
-						</div>
-                      <!--   <div class="col-md-3">
-                            <div class="left_img">
-                                <iframe width="300" height="315" src="https://www.youtube.com/embed/LplFoFwf51w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div> -->
-
-					</div>
-        		</div>
-        	</div>
-
-            <!-- Ba Hum Boogie-->
             <div class="container">
+                <h3>Cold Turkey and the Fruitcakes</h3>
+                <hr>
                 <div class="portfolio_details_inner">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="left_img">
-                                <iframe src="https://open.spotify.com/embed/album/3iZxocxZpAyWianbeEGQLG" width="300" height="280" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                <img class="img-fluid" src="./img/photos/ColdTurkey.png">
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div class="portfolio_right_text">
-                                <h5>Ba Hum Boogie</h5>
-                                <hr>
-                                <p>Listen to it on Spotify <a href="https://open.spotify.com/artist/6JXyYndltPRIwdll7gzrWU?si=yqIwUApsQz2XIEERpPcJdg" target="_blank"> here</a>. </p>
+                                <p>When I was living in Chicago, my friends and we formed a folk-rock mash-up coverband named Cold Turkey and the Fruitcakes. We recorded two albums in our basement studio, yes one is a Christmas album. We were really going for that "back shelf at Goodwill" vibe.</p>
+                                <p>Alex Lupo (Vocals, Guitar) Riley Hanus (Vocals, Mandolin, Guitar) Matthias Agne (Bass, Baritone) Robert Free (Drums, Percussion) Blake Rason (Violin, Viola)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <!-- The Random Hits-->
+                            <div class="center_img">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=xzs6pxjVmArkQra7&amp;list=PLdLhIfXIz3xPKF6aDrn50_pqLXegXuLQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <!-- Ba Hum Boogie-->
+                            <div class="center_img">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=psOQ-mD1Jn0lmJGl&amp;list=PLdLhIfXIz3xOre1q_QJrInd373pvhO9Qj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
 
+            
         </section>
         <!--================End Cold Turkey =================-->
 
@@ -179,50 +408,33 @@
         <!--================The Real Quaid =================-->
         <section class="portfolio_details_area p_20" id="TRQ">
             <div class="container">
-            
-                <h3> The Real Quaid </h3>
+                <h3>The Real Quaid</h3>
                 <hr>
-                <div class="portfolio_details_inner">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="left_img">
-                                <img class="img-fluid" src="./img/photos/TRQ.png">
-							</div>
-						</div>
-
-
-						<div class="col-md-9">
-							<div class="portfolio_right_text">
-                                <p> The Real Quaid started as an Ames Iowa college band. We played frequently in Ames, Des Moines, Cedar Rapids, and the Quad Cities. The glory days. We still play sometimes. When we can.</p>
-                                <p> Riley Hanus (Vocals, Guitar, Piano) Matt Knoll (Vocals, Guitar) Vince Hartogh (Drums, Vocals) Colin Grace (Bass)</p>
-							</div>
-						</div>
-					</div>
-        		</div>
-                <hr>
-            </div>
-
-            <!-- The Real Quaid-->
-            <div class="container">
                 <div class="portfolio_details_inner">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="left_img">
-                                <iframe src="https://open.spotify.com/embed/album/0RMqoVoUahKjQnE0yfghXT" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                <img class="img-fluid" src="./img/photos/TRQ.png">
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div class="portfolio_right_text">
-                                <h5>The Real Quaid</h5>
-                                <hr>
-                                <p>Listen to us on Spotify <a href="https://open.spotify.com/artist/1jTXANC1FPeXjTCa6jMJcd?si=iwUZkg-8Q8Wvqg1wlCpnHg" target="_blank"> here</a>. </p>
+                                <p>The Real Quaid started as an Ames Iowa college band. We played frequently in Ames, Des Moines, Cedar Rapids, and the Quad Cities. The glory days. We still play sometimes. When we can.</p>
+                                <p>Riley Hanus (Vocals, Guitar, Piano) Matt Knoll (Vocals, Guitar) Vince Hartogh (Drums, Vocals) Colin Grace (Bass)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-8">
+                            <!-- The Real Quaid Spotify-->
+                            <div class="center_img">
+                                <iframe src="https://open.spotify.com/embed/album/0RMqoVoUahKjQnE0yfghXT" width="100%" height="600" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-
-            
         </section>
         <!--================End The Real Quaid =================-->
 
