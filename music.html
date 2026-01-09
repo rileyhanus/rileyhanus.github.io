@@ -88,7 +88,7 @@
         <!--================Video Section =================-->
         <section class="portfolio_details_area p_20" id="Videos">
             <div class="container">
-                <h3>Live Videos</h3>
+                <h3>Example Live Videos</h3>
                 <hr>
                 <style>
                     .video-player-container {
@@ -207,18 +207,26 @@
                     </div>
                 </div>
                 <script>
-                    // List of all videos with optional titles
+                    // List of all videos with titles and categories, interdispersed
                     const videos = [
-                        { src: 'promo/videos/AQM0E5MZxLRLIRC4Rp7Fj1wWOksQNTuOVClDk_lw03godcNPPqViXrH0TAxQBahMeGz-izCkORffWaqP2sT4JqoN.mp4', title: 'Video 1' },
-                        { src: 'promo/videos/IMG_1209.mov', title: 'Video 9' },
-                        { src: 'promo/videos/AQN0zkBBXBFF31ebcCyIe6uCduDlJBl6FLrMUAxNOact5NHLErBgamnsDJZSO1ErVrHS91IE2Fq1Pb0qKC0gkC4S.mp4', title: 'Video 2' },
-                        { src: 'promo/videos/AQO3wlmAhZABxeY2WNdYB5lPVgoPsBE2Pzs5NjwWNHZ7dAGMk-UdjWCjPR0LVXdDydEOawxd_lMsQl6tKhNses72vpHG-f-6i-65VUw.mp4', title: 'Video 3' },
-                        { src: 'promo/videos/AQO5D1poNBJdUx_gH7GrEBaNc7tZYWobZ5cGNOms1jDwtaIG6I8ArpZBH_gZCmkcDdY8toulhdbnsQwQ4X1UCJmSk0U2PzIPF5yqs1k.mp4', title: 'Video 4' },
-                        { src: 'promo/videos/AQOLzGGA3wZ89mPBW8MwPbQgvctGt1v7clYGRHXUWRClxXqpv9Mbp8GGsS54IOZAXQp4jl_oce6pNXCBDiHPRoOH.mp4', title: 'Video 5' },
-                        { src: 'promo/videos/AQPCnYV5BtCoSkgOkpmpI3ikM7PTzJAaYc5NoiiWGMqzeLQP_sKLlfP7BhsI24LdICmf2bBIbsB-v3kzrYURy8dvrqzYnx3gtCDx4G0.mp4', title: 'Video 6' },
-                        { src: 'promo/videos/AQPt93cViJnQ7I1f1VJ5qLezBBOX0ct0Tlvu8CUS92eaXp8029i2VXrEk3sLCHzD9Gwrze9aX1dzNpE0yWQEeUGIGH_WtBajyxBfEsI.mp4', title: 'Video 7' },
-                        { src: 'promo/videos/IMG_0750.mov', title: 'Video 8' },
-                        
+                        // Full Band
+                        { src: 'promo/videos/Full Band 1.mp4', title: 'Full Band Performance', category: 'Full Band' },
+                        // Solo Artist
+                        { src: 'promo/videos/Solo Artist 1.mp4', title: 'Solo Performance', category: 'Solo Artist' },
+                        // Small Group
+                        { src: 'promo/videos/Small Group 1.MOV', title: 'Small Group Performance', category: 'Small Group' },
+                        // Full Band
+                        { src: 'promo/videos/Full Band 2.mov', title: 'Full Band Live', category: 'Full Band' },
+                        // Solo Artist
+                        { src: 'promo/videos/Solo Artist 2.mp4', title: 'Solo Piano/Vocals', category: 'Solo Artist' },
+                        // Full Band
+                        { src: 'promo/videos/Full Band Crowd 1.mp4', title: 'Full Band with Crowd', category: 'Full Band' },
+                        // Solo Artist
+                        { src: 'promo/videos/Solo Artist 3.mp4', title: 'Solo Acoustic', category: 'Solo Artist' },
+                        // Full Band
+                        { src: 'promo/videos/Full Band 3.mp4', title: 'Full Band Show', category: 'Full Band' },
+                        // Full Band
+                        { src: 'promo/videos/Full Band Crowd 2.mp4', title: 'Full Band Crowd Energy', category: 'Full Band' }
                     ];
                     
                     let currentVideoIndex = 0;
@@ -253,7 +261,7 @@
                             
                             const label = document.createElement('div');
                             label.className = 'video-thumbnail-label';
-                            label.textContent = video.title;
+                            label.innerHTML = video.title + '<br><small style="font-size: 0.8em; opacity: 0.9;">' + video.category + '</small>';
                             
                             thumbnailItem.appendChild(thumbnailVideo);
                             thumbnailItem.appendChild(label);
@@ -310,7 +318,7 @@
         <section class="portfolio_details_area p_20" id="Setlist">
             <div class="container">
                 <h3>Setlist</h3>
-                <p>Here is an incomplete list of cover songs I know. This list is continuously updated as I learn new songs and work with different groups.</p>
+                <p>Here is an incomplete list of cover songs I know. This list is continuously updated as I learn new songs and work with different groups. Feel free to request new songs!</p>
                 <hr>
                 <div class="portfolio_details_inner">
                     <div class="row">
@@ -566,7 +574,7 @@
         <section class="portfolio_details_area p_20" id="Booking">
             <div class="container">
                 <h3>Booking</h3>
-                <p>Interested in booking live music? Fill out the form below and I'll get back to you soon with our pricing and availability!</p>
+                <p>Interested in booking live music? Fill out the form below and I'll get back to you soon with our pricing and availability! I like to book shows in bulk, so feel free to ask for as many dates as you need.</p>
                 <hr>
                 <div class="portfolio_details_inner">
                     <div class="row">
