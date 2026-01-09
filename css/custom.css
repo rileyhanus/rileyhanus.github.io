@@ -89,6 +89,13 @@ h3{
 	font-weight: lighter;
 }
 
+.home_banner_area .banner_inner .banner_content h5{
+	line-height: 1.5;
+	overflow: visible;
+	white-space: normal;
+	word-wrap: break-word;
+}
+
 .pb-4{
 	padding-bottom: 400px
 }
@@ -171,3 +178,54 @@ h3{
         margin: 0px auto 45px; }
       .science_banner_area .banner_inner .banner_content .banner_map_img {
         text-align: right; }
+
+/* Booking Form Styles */
+#bookingForm label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#bookingForm input[type="text"],
+#bookingForm input[type="email"],
+#bookingForm select,
+#bookingForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.3s ease;
+    color: var(--text-color);
+}
+
+#bookingForm input[type="text"]:focus,
+#bookingForm input[type="email"]:focus,
+#bookingForm select:focus,
+#bookingForm textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(66, 124, 136, 0.1);
+}
+
+#bookingForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#bookingForm .submit_btn {
+    margin-top: 10px;
+}
+
+#formStatus {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#formStatus div {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
