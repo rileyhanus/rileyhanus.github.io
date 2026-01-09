@@ -234,7 +234,7 @@
                             if (index === 0) {
                                 thumbnailItem.classList.add('active');
                             }
-                            thumbnailItem.onclick = () => loadVideo(index);
+                            thumbnailItem.onclick = () => loadVideo(index, true); // Scroll when user clicks
                             
                             const thumbnailVideo = document.createElement('video');
                             thumbnailVideo.src = video.src;
@@ -262,7 +262,7 @@
                     }
                     
                     // Load main video
-                    function loadVideo(index) {
+                    function loadVideo(index, shouldScroll = false) {
                         if (index >= 0 && index < videos.length) {
                             currentVideoIndex = index;
                             videoElement.src = videos[currentVideoIndex].src;
@@ -273,30 +273,34 @@
                             thumbnails.forEach((thumb, i) => {
                                 if (i === index) {
                                     thumb.classList.add('active');
-                                    // Scroll active thumbnail into view
-                                    const container = document.querySelector('.video-thumbnails-container');
-                                    const thumbLeft = thumb.offsetLeft;
-                                    const thumbWidth = thumb.offsetWidth;
-                                    const containerWidth = container.offsetWidth;
-                                    const scrollLeft = container.scrollLeft;
-                                    const thumbCenter = thumbLeft + thumbWidth / 2 - containerWidth / 2;
-                                    container.scrollTo({
-                                        left: scrollLeft + thumbCenter,
-                                        behavior: 'smooth'
-                                    });
+                                    // Scroll active thumbnail into view (only if user clicked)
+                                    if (shouldScroll) {
+                                        const container = document.querySelector('.video-thumbnails-container');
+                                        const thumbLeft = thumb.offsetLeft;
+                                        const thumbWidth = thumb.offsetWidth;
+                                        const containerWidth = container.offsetWidth;
+                                        const scrollLeft = container.scrollLeft;
+                                        const thumbCenter = thumbLeft + thumbWidth / 2 - containerWidth / 2;
+                                        container.scrollTo({
+                                            left: scrollLeft + thumbCenter,
+                                            behavior: 'smooth'
+                                        });
+                                    }
                                 } else {
                                     thumb.classList.remove('active');
                                 }
                             });
                             
-                            // Scroll to top of video player
-                            videoElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Scroll to top of video player (only if user clicked)
+                            if (shouldScroll) {
+                                videoElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
                         }
                     }
                     
                     // Initialize
                     createThumbnails();
-                    loadVideo(0);
+                    loadVideo(0, false); // Don't scroll on initial load
                 </script>
             </div>
         </section>
