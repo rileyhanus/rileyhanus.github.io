@@ -1,0 +1,237 @@
+<!--================Video Section =================-->
+<section class="portfolio_details_area p_20" id="Videos">
+    <div class="container">
+        <h3>Example Live Videos</h3>
+        <p>These are example raw videos, so you can know what to expect. We can tailor our setlist to the venue and crowd, so just let us know what you're looking for!</p>
+        <hr>
+        <style>
+            .video-player-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px 0;
+            }
+            .video-main-wrapper {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                height: 600px;
+                background: #000;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .video-main-wrapper video {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+            @media (max-width: 768px) {
+                .video-main-wrapper {
+                    height: 400px;
+                }
+            }
+            .video-thumbnails-container {
+                margin-top: 20px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 10px 0;
+                scroll-behavior: smooth;
+            }
+            .video-thumbnails-container::-webkit-scrollbar {
+                height: 8px;
+            }
+            .video-thumbnails-container::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+            .video-thumbnails-container::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+            .video-thumbnails-container::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+            .video-thumbnails-grid {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                padding: 0 5px;
+            }
+            .video-thumbnail-item {
+                position: relative;
+                cursor: pointer;
+                border-radius: 8px;
+                overflow: hidden;
+                background: #000;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+                flex-shrink: 0;
+                width: 250px;
+                aspect-ratio: 16 / 9;
+            }
+            @media (max-width: 768px) {
+                .video-thumbnail-item {
+                    width: 200px;
+                }
+            }
+            .video-thumbnail-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            }
+            .video-thumbnail-item.active {
+                border: 3px solid #007bff;
+                box-shadow: 0 4px 16px rgba(0,123,255,0.4);
+            }
+            .video-thumbnail-item video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+            .video-thumbnail-label {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+                color: white;
+                padding: 10px;
+                font-size: 0.9em;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .video-thumbnail-item:hover .video-thumbnail-label {
+                opacity: 1;
+            }
+        </style>
+        <div class="video-player-container">
+            <div class="video-main-wrapper">
+                <video id="currentVideo" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-thumbnails-container">
+                <div class="video-thumbnails-grid" id="videoThumbnailsGrid"></div>
+            </div>
+        </div>
+        <script>
+            // Video data will be loaded dynamically from JSON
+            let videos = [];
+            let currentVideoIndex = 0;
+            const videoElement = document.getElementById('currentVideo');
+            const thumbnailsGrid = document.getElementById('videoThumbnailsGrid');
+            
+            // Load videos from JSON file
+            async function loadVideos() {
+                try {
+                    // Path relative to music.html's location (music/ folder)
+                    // Scripts execute in the context of the main document
+                    const response = await fetch('promo/videos/videos.json');
+                    if (!response.ok) {
+                        throw new Error('Failed to load videos.json');
+                    }
+                    const videoData = await response.json();
+                    
+                    // Process video data: add full path and ensure proper format
+                    videos = videoData.map(video => ({
+                        src: 'promo/videos/' + video.src,
+                        title: video.title
+                    }));
+                    
+                    // Initialize video player with loaded videos
+                    createThumbnails();
+                    if (videos.length > 0) {
+                        loadVideo(0, false); // Don't scroll on initial load
+                    }
+                } catch (error) {
+                    console.error('Error loading videos:', error);
+                    // Fallback: show error message or empty state
+                    thumbnailsGrid.innerHTML = '<p style="color: #666; text-align: center; padding: 20px;">Unable to load videos. Please refresh the page.</p>';
+                }
+            }
+            
+            // Create thumbnail grid
+            function createThumbnails() {
+                thumbnailsGrid.innerHTML = '';
+                videos.forEach((video, index) => {
+                    const thumbnailItem = document.createElement('div');
+                    thumbnailItem.className = 'video-thumbnail-item';
+                    if (index === 0) {
+                        thumbnailItem.classList.add('active');
+                    }
+                    thumbnailItem.onclick = () => loadVideo(index, true); // Scroll when user clicks
+                    
+                    const thumbnailVideo = document.createElement('video');
+                    thumbnailVideo.src = video.src;
+                    thumbnailVideo.muted = true;
+                    thumbnailVideo.preload = 'metadata';
+                    
+                    // Seek to a point in the video for thumbnail preview
+                    thumbnailVideo.addEventListener('loadedmetadata', function() {
+                        const seekTime = Math.min(thumbnailVideo.duration * 0.2, 3);
+                        thumbnailVideo.currentTime = seekTime;
+                    }, { once: true });
+                    
+                    thumbnailVideo.addEventListener('seeked', function() {
+                        thumbnailVideo.pause();
+                    }, { once: true });
+                    
+                    const label = document.createElement('div');
+                    label.className = 'video-thumbnail-label';
+                    label.innerHTML = video.title;
+                    
+                    thumbnailItem.appendChild(thumbnailVideo);
+                    thumbnailItem.appendChild(label);
+                    thumbnailsGrid.appendChild(thumbnailItem);
+                });
+            }
+            
+            // Load main video
+            function loadVideo(index, shouldScroll = false) {
+                if (index >= 0 && index < videos.length) {
+                    currentVideoIndex = index;
+                    videoElement.src = videos[currentVideoIndex].src;
+                    videoElement.load();
+                    
+                    // Update active thumbnail
+                    const thumbnails = thumbnailsGrid.querySelectorAll('.video-thumbnail-item');
+                    thumbnails.forEach((thumb, i) => {
+                        if (i === index) {
+                            thumb.classList.add('active');
+                            // Scroll active thumbnail into view (only if user clicked)
+                            if (shouldScroll) {
+                                const container = document.querySelector('.video-thumbnails-container');
+                                const thumbLeft = thumb.offsetLeft;
+                                const thumbWidth = thumb.offsetWidth;
+                                const containerWidth = container.offsetWidth;
+                                const scrollLeft = container.scrollLeft;
+                                const thumbCenter = thumbLeft + thumbWidth / 2 - containerWidth / 2;
+                                container.scrollTo({
+                                    left: scrollLeft + thumbCenter,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        } else {
+                            thumb.classList.remove('active');
+                        }
+                    });
+                    
+                    // Scroll to top of video player (only if user clicked)
+                    if (shouldScroll) {
+                        videoElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            }
+            
+            // Initialize: Load videos from JSON file
+            loadVideos();
+        </script>
+    </div>
+</section>
+<!--================End Video Section =================-->

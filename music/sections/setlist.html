@@ -1,0 +1,149 @@
+<!--================Setlist Section =================-->
+<section class="portfolio_details_area p_20" id="Setlist">
+    <div class="container">
+        <h3>Setlist</h3>
+        <p>Here is an incomplete list of cover songs I know. This list is continuously updated as I learn new songs and work with different groups. Feel free to request new songs!</p>
+        <hr>
+        <div class="portfolio_details_inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio_right_text">
+                        <div class="text-right mb-2">
+                            <small id="song-count" style="font-size: 0.85em; color: #888; font-style: italic;">Total: <span id="count-number">-</span> songs</small>
+                        </div>
+                        <div id="setlist-scroll-container" style="border: 2px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9; max-height: 600px; overflow-y: auto; overflow-x: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <style>
+                                #setlist-scroll-container .setlist-column li {
+                                    padding: 8px 12px;
+                                    margin: 2px 0;
+                                    border-radius: 4px;
+                                    transition: background-color 0.2s ease;
+                                    font-size: 0.95em;
+                                    line-height: 1.6;
+                                }
+                                #setlist-scroll-container .setlist-column li:hover {
+                                    background-color: #e8e8e8;
+                                }
+                                #setlist-scroll-container .setlist-column li strong {
+                                    color: #2c3e50;
+                                    margin-right: 8px;
+                                }
+                                #setlist-scroll-container::-webkit-scrollbar {
+                                    width: 10px;
+                                }
+                                #setlist-scroll-container::-webkit-scrollbar-track {
+                                    background: #f1f1f1;
+                                    border-radius: 5px;
+                                }
+                                #setlist-scroll-container::-webkit-scrollbar-thumb {
+                                    background: #888;
+                                    border-radius: 5px;
+                                }
+                                #setlist-scroll-container::-webkit-scrollbar-thumb:hover {
+                                    background: #555;
+                                }
+                            </style>
+                            <ul class="setlist-column" id="setlist-items" style="list-style: none; padding-left: 0; margin: 0;">
+                                <!-- Songs will be loaded dynamically from CSV -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Simple CSV parser
+            function parseCSV(text) {
+                const lines = text.split('\n');
+                const headers = lines[0].split(',');
+                const data = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim() === '') continue;
+                    
+                    // Handle quoted fields with commas
+                    const row = [];
+                    let current = '';
+                    let insideQuotes = false;
+                    
+                    for (let j = 0; j < lines[i].length; j++) {
+                        const char = lines[i][j];
+                        const nextChar = lines[i][j + 1];
+                        
+                        if (char === '"' && insideQuotes && nextChar === '"') {
+                            // Escaped quote
+                            current += '"';
+                            j++;
+                        } else if (char === '"') {
+                            // Toggle quote state
+                            insideQuotes = !insideQuotes;
+                        } else if (char === ',' && !insideQuotes) {
+                            // Field separator
+                            row.push(current);
+                            current = '';
+                        } else {
+                            current += char;
+                        }
+                    }
+                    row.push(current); // Last field
+                    
+                    if (row.length >= 2) {
+                        data.push({
+                            songName: row[0].trim(),
+                            artist: row[1].trim()
+                        });
+                    }
+                }
+                
+                return data;
+            }
+            
+            // Load setlist from CSV
+            async function loadSetlist() {
+                try {
+                    // Path relative to music.html's location (music/ folder)
+                    // Scripts execute in the context of the main document
+                    // Add cache-busting query parameter to ensure fresh data
+                    const cacheBuster = new Date().getTime();
+                    const response = await fetch('setlist.csv?t=' + cacheBuster, {
+                        cache: 'no-cache'
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to load setlist.csv');
+                    }
+                    const csvText = await response.text();
+                    const songs = parseCSV(csvText);
+                    
+                    // Get the container
+                    const setlistContainer = document.getElementById('setlist-items');
+                    setlistContainer.innerHTML = '';
+                    
+                    // Generate list items
+                    songs.forEach(song => {
+                        const li = document.createElement('li');
+                        if (song.artist) {
+                            li.innerHTML = '<strong>' + song.songName + '</strong> - ' + song.artist;
+                        } else {
+                            li.innerHTML = '<strong>' + song.songName + '</strong>';
+                        }
+                        setlistContainer.appendChild(li);
+                    });
+                    
+                    // Update count
+                    const countElement = document.getElementById('count-number');
+                    if (countElement) {
+                        countElement.textContent = songs.length;
+                    }
+                } catch (error) {
+                    console.error('Error loading setlist:', error);
+                    const setlistContainer = document.getElementById('setlist-items');
+                    setlistContainer.innerHTML = '<li style="color: #666; padding: 20px; text-align: center;">Unable to load setlist. Please refresh the page.</li>';
+                }
+            }
+            
+            // Load setlist when section is ready
+            loadSetlist();
+        </script>
+    </div>
+</section>
+<!--================End Setlist Section =================-->
