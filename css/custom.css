@@ -6,6 +6,21 @@
   --text-color: #15282c;
 }
 
+/* Scroll padding to account for fixed header */
+html {
+  scroll-padding-top: 90px;
+}
+
+/* Add top padding to sections container to prevent content from being hidden behind fixed header */
+#sections-container {
+  padding-top: 40px;
+}
+
+/* Add scroll margin to sections for smooth anchor scrolling */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
 .about_padding{
 	padding-top: 100px;
 	text-align: center;
