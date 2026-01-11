@@ -1,0 +1,201 @@
+<!--================Venues and Events Section =================-->
+<section class="portfolio_details_area p_20" id="Venues">
+    <div class="container">
+        <h3>Venues and Events</h3>
+        <p>Here are some of the venues and events I have played at with along with my collaborators.</p>
+        <hr>
+        <style>
+            .venues-gallery-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px 0;
+                position: relative;
+            }
+            .venues-image-wrapper {
+                position: relative;
+                width: 100%;
+                max-width: 800px;
+                height: 450px;
+                background: #000;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            @media (max-width: 500px) {
+                .venues-image-wrapper {
+                    height: 300px;
+                    max-width: 100%;
+                }
+            }
+            .venues-image-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+            .venues-nav-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.6);
+                color: white;
+                border: 2px solid white;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                z-index: 10;
+                user-select: none;
+            }
+            .venues-nav-button:hover {
+                background: rgba(0, 0, 0, 0.8);
+                transform: translateY(-50%) scale(1.1);
+            }
+            .venues-nav-button:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            .venues-nav-button.prev {
+                left: 20px;
+            }
+            .venues-nav-button.next {
+                right: 20px;
+            }
+            .venues-nav-button:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+            .venues-nav-button:disabled:hover {
+                transform: translateY(-50%) scale(1);
+                background: rgba(0, 0, 0, 0.6);
+            }
+            .venues-title {
+                text-align: center;
+                font-size: 1.2em;
+                color: var(--text-color);
+                margin-top: 15px;
+                font-weight: 500;
+            }
+            .venues-counter {
+                text-align: center;
+                color: #888;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+        </style>
+        <div class="venues-gallery-container">
+            <div class="venues-image-wrapper">
+                <button class="venues-nav-button prev" id="venuesPrevBtn" aria-label="Previous image">‹</button>
+                <img id="venuesCurrentImage" src="" alt="" style="display: none;">
+                <button class="venues-nav-button next" id="venuesNextBtn" aria-label="Next image">›</button>
+            </div>
+            <div class="venues-title" id="venuesTitle"></div>
+            <div class="venues-counter" id="venuesCounter"></div>
+        </div>
+        <script>
+            // Venue data will be loaded dynamically from JSON
+            let venues = [];
+            let currentVenueIndex = 0;
+            const currentImage = document.getElementById('venuesCurrentImage');
+            const prevBtn = document.getElementById('venuesPrevBtn');
+            const nextBtn = document.getElementById('venuesNextBtn');
+            const titleElement = document.getElementById('venuesTitle');
+            const counterElement = document.getElementById('venuesCounter');
+            
+            // Load venues from JSON file
+            async function loadVenues() {
+                try {
+                    // Path relative to music.html's location (music/ folder)
+                    const cacheBuster = new Date().getTime();
+                    const response = await fetch('promo/veneus/venues.json?t=' + cacheBuster, {
+                        cache: 'no-cache'
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to load venues.json');
+                    }
+                    const venueData = await response.json();
+                    
+                    // Process venue data: add full path
+                    venues = venueData.map(venue => ({
+                        src: 'promo/veneus/' + venue.src,
+                        title: venue.title
+                    }));
+                    
+                    // Initialize gallery with loaded venues
+                    if (venues.length > 0) {
+                        showVenue(0);
+                        updateNavigation();
+                    } else {
+                        currentImage.style.display = 'none';
+                        titleElement.textContent = 'No venues found';
+                    }
+                } catch (error) {
+                    console.error('Error loading venues:', error);
+                    currentImage.style.display = 'none';
+                    titleElement.textContent = 'Unable to load venues. Please refresh the page.';
+                }
+            }
+            
+            // Show a specific venue
+            function showVenue(index) {
+                if (index >= 0 && index < venues.length) {
+                    currentVenueIndex = index;
+                    const venue = venues[currentVenueIndex];
+                    currentImage.src = venue.src;
+                    currentImage.alt = venue.title;
+                    currentImage.style.display = 'block';
+                    titleElement.textContent = venue.title;
+                    counterElement.textContent = (index + 1) + ' / ' + venues.length;
+                    updateNavigation();
+                }
+            }
+            
+            // Update navigation button states
+            function updateNavigation() {
+                prevBtn.disabled = currentVenueIndex === 0;
+                nextBtn.disabled = currentVenueIndex === venues.length - 1;
+            }
+            
+            // Navigation button handlers
+            prevBtn.addEventListener('click', function() {
+                if (currentVenueIndex > 0) {
+                    showVenue(currentVenueIndex - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentVenueIndex < venues.length - 1) {
+                    showVenue(currentVenueIndex + 1);
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Only handle if venues are loaded and we're not in an input/textarea
+                if (venues.length === 0 || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+                    return;
+                }
+                
+                if (e.key === 'ArrowLeft' && currentVenueIndex > 0) {
+                    showVenue(currentVenueIndex - 1);
+                } else if (e.key === 'ArrowRight' && currentVenueIndex < venues.length - 1) {
+                    showVenue(currentVenueIndex + 1);
+                }
+            });
+            
+            // Initialize: Load venues from JSON file
+            loadVenues();
+        </script>
+    </div>
+</section>
+<!--================End Venues and Events Section =================-->
